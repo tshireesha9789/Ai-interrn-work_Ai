@@ -1,0 +1,22 @@
+Model,Manufacturer,Type,Stages,RPM,HP,Efficiency,Capacity LPM,Head m,Performance Curves,Suitability
+RKBV125/30-5 & 6 stg MSMO,Kirloskar,Vertical multi outlet,5 & 6,1485,180,N/A,2850,"[118, 178]",Point data: 2850 LPM at 118m and 178m head. Full curve from manufacturer datasheet.,Main Hydrant Pump for multi-zone fire fighting systems in high-rise buildings.
+RN125B V 7 STG WITH 2 Outlet,Wilo Mather + Platt,Vertical multi outlet,7,1480,180,76.20,2850,"[118, 178]",Point data: 2850 LPM at 118m and 178m head. Full curve from manufacturer datasheet (aligned with PDF filenames for 171 m³/h at 178m).,Main Hydrant Pump alternative for multi-zone fire fighting systems.
+RKBV40/14H 4 & 6 stg MSMO,Kirloskar,Vertical multi outlet,4 & 6,2930,15,N/A,180,"[118, 178]",Point data: 180 LPM at 118m and 178m head.,Hydrant Jockey Pump for pressure maintenance in fire systems.
+RN 32 V 8 STG WITH 2 Outlet,Wilo Mather + Platt,Vertical multi outlet,8,2920,20,55.19,180,"[118, 178]",Point data: 180 LPM at 118m and 178m head.,Hydrant/Sprinkler Jockey Pump alternative.
+RKB125/30-5 & 6 stg MSMO,Kirloskar,Horizontal multi outlet,5 & 6,1500,198,N/A,2850,"[118, 178]",Point data: 2850 LPM at 118m and 178m head.,Diesel Standby Pump for fire fighting in high-rises.
+RN125B 5STG WITH 2 outlet,Wilo Mather + Platt,Horizontal multi outlet,5,1800,198,74.39,2850,"[118, 178]",Point data: 2850 LPM at 118m and 178m head.,Diesel Standby Pump alternative.
+RKBV 150/34-6 stg,Kirloskar,Vertical,6,1486,241,N/A,2850,[217],Point data: 2850 LPM at 217m head.,Fire Water Transfer Pump from UG to OH tank.
+RN125B V 8 STG,Wilo Mather + Platt,Vertical single outlet,8,1490,215,76.81,2850,[217],Point data: 2850 LPM at 217m head.,Fire Water Transfer Pump alternative.
+DB 80/20xe,Kirloskar,Horizontal,N/A,2930,50,N/A,2850,[47],Point data: 2850 LPM at 47m head.,Main Hydrant/Sprinkler/Standby Pump at terrace level for high zone.
+Atmos GIGA N 100-200,Wilo Mather + Platt,Horizontal,N/A,2945,50,77.72,2850,[47],Point data: 2850 LPM at 47m head (aligned with PDF filename for 171 m³/h at 47m).,Main Hydrant/Sprinkler/Standby Pump alternative at terrace.
+KCIL 10-07,Kirloskar,Vertical single outlet,7,2900,4,N/A,180,[47],Point data: 180 LPM at 47m head.,Hydrant/Sprinkler Jockey Pump at terrace.
+WROX 807-5/25/V/3-415-50-2-IE3/OEM/01,Wilo Mather + Platt,Vertical,N/A,2950,5,61,180,[47],Point data: 180 LPM at 47m head (aligned with PDF filename for 10.8 m³/h at 47m).,Hydrant/Sprinkler Jockey Pump alternative at terrace.
+KDI1348+,Kirloskar,Mono-block,N/A,2900,12.5,N/A,900,[35],Point data: 900 LPM at 35m head.,Booster Pump for fire fighting.
+MPM 1222,Mather and Platt,Mono-block,N/A,2900,12.5,N/A,900,[35],Point data: 900 LPM at 35m head.,Booster Pump alternative.
+RKBV 125/30 - 5 & 6 Stg MSMO,Kirloskar,Vertical Multistage Multioutlet,5 & 6,1485,180,N/A,2850,"[118, 178]",Point data: 2850 LPM at 118m and 178m head.,Hyd & Spr Fire Pumpsets for multi-zone fire fighting.
+RKB 125/30 - 5 & 6 Stg MSMO,Kirloskar,Horizontal Multistage Multioutlet,5 & 6,1500,198,N/A,2850,"[118, 178]",Point data: 2850 LPM at 118m and 178m head.,Diesel Engine Pumpset for fire fighting standby.
+RKBV 40/14H 4 & 6 Stg MSMO,Kirloskar,Vertical Multistage Multioutlet,4 & 6,2930,15,N/A,180,"[118, 178]",Point data: 180 LPM at 118m and 178m head.,Hyd & Spk Jockey Pumpsets for pressure maintenance.
+RKBV 150/34 6 STG,Kirloskar,Vertical Multistage,6,1486,241,N/A,2850,[217],Point data: 2850 LPM at 217m head.,Fire Water Transfer Pumpsets.
+"KCIL 10-07, 07 STG",Kirloskar,Vertical Inline,7,2900,4,N/A,180,[47],Point data: 180 LPM at 47m head.,Jockey Electric Pumpsets for fire systems.
+KDI 1348+,Kirloskar,Horizontal Single Stage Monobloc,N/A,2900,12.5,N/A,900,[35],Point data: 900 LPM at 35m head.,Booster Pumpsets for fire fighting.
+KFE-E2709R-G86,Kirloskar,Horizontal End Suction,N/A,2000,70,N/A,2850,[47],Point data: 2850 LPM at 47m head.,Diesel Engine Pumpset for fire fighting.
