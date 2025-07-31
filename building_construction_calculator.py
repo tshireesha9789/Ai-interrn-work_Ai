@@ -3,6 +3,7 @@ import pandas as pd
 import math
 import time
 import plotly.graph_objects as go
+import plotly.express as px
 import ast
 
 st.set_page_config(layout="wide", page_title="Building Construction Calculator")
@@ -262,24 +263,24 @@ if uploaded_file:
                     fig_pie.update_layout(title="Sewage Breakdown", width=400, height=400)
                     st.plotly_chart(fig_pie, key="excel_pie")
                 with col2:
-                    dim_data = pd.DataFrame({
-                        'Building': selected_df['Building'],
-                        'Length': [float(s.split('x')[0].strip().replace("m", "").strip()) for s in selected_df['STP Dimensions']],
-                        'Width': [float(s.split('x')[1].strip().replace("m", "").strip()) for s in selected_df['STP Dimensions']],
-                        'Height': [float(s.split('x')[2].strip().replace("m", "").strip()) for s in selected_df['STP Dimensions']]
-                    })
-                    fig_3d = go.Figure(data=[go.Scatter3d(
-                        x=dim_data['Length'], y=dim_data['Width'], z=dim_data['Height'],
-                        mode='markers+text', marker=dict(size=10, color='blue'),
-                        text=dim_data['Building'],
-                        hovertemplate="Building: %{text}<br>Length: %{x:.2f}m<br>Width: %{y:.2f}m<br>Height: %{z:.2f}m"
-                    )])
-                    fig_3d.update_layout(scene=dict(
-                        xaxis_title='Length (m)', yaxis_title='Width (m)', zaxis_title='Height (m)',
-                        xaxis=dict(range=[0, max(50, max(dim_data['Length']) + 5)]),
-                        yaxis=dict(range=[0, max(20, max(dim_data['Width']) + 5)]),
-                        zaxis=dict(range=[0, max(10, max(dim_data['Height']) + 2)])
-                    ), title="STP Dimensions", width=400, height=400)
+                    # 3D Scatter Plot using sewage data with multiple bubbles and color range
+                    fig_3d = px.scatter_3d(
+                        selected_df,
+                        x='Domestic (L)',
+                        y='Flushing (L)',
+                        z='Sewage (L)',
+                        color='Sewage (L)',
+                        size='Sewage (L)',
+                        title='3D STP Sewage Visualization',
+                        size_max=60,
+                        color_continuous_scale='Viridis'
+                    )
+                    fig_3d.update_layout(
+                        scene_camera=dict(eye=dict(x=1.2, y=1.2, z=0.8)),
+                        width=800,
+                        height=600,
+                        coloraxis_colorbar=dict(title="Sewage (L) Range")
+                    )
                     st.plotly_chart(fig_3d, key="excel_3d")
                 
                 # Button to show pump head form
@@ -337,16 +338,18 @@ if st.session_state.show_manual_form:
                     st.session_state.width = width
                     st.session_state.height = height
                     st.session_state.collection_tank_kld = collection_tank_kld
-                    results_df = pd.DataFrame([{
-                        'Building': 'Manual Input',
-                        'Population': population,
-                        'Domestic (L)': population * (water_usage_lpcd * 0.6667),
-                        'Flushing (L)': population * (water_usage_lpcd * 0.3333),
-                        'Sewage (L)': sewage_kld * 1000,
-                        'STP Capacity (KLD)': stp_capacity_kld,
-                        'Collection Tank (KLD)': collection_tank_kld,
-                        'STP Dimensions': f"{length}m x {width}m x {height}m"
-                    }])
+                    # Simulate multiple bubbles by creating a range of sewage values
+                    base_sewage = sewage_kld * 1000
+                    results_df = pd.DataFrame({
+                        'Building': ['Manual Input'] * 5,
+                        'Population': [population] * 5,
+                        'Domestic (L)': [population * (water_usage_lpcd * 0.6667)] * 5,
+                        'Flushing (L)': [population * (water_usage_lpcd * 0.3333)] * 5,
+                        'Sewage (L)': [base_sewage * 0.8, base_sewage * 0.9, base_sewage, base_sewage * 1.1, base_sewage * 1.2],
+                        'STP Capacity (KLD)': [stp_capacity_kld] * 5,
+                        'Collection Tank (KLD)': [collection_tank_kld] * 5,
+                        'STP Dimensions': [f"{length}m x {width}m x {height}m"] * 5
+                    })
                     st.session_state.results_df = results_df
                     st.dataframe(results_df)
                     results_csv = results_df.to_csv(index=False)
@@ -362,16 +365,24 @@ if st.session_state.show_manual_form:
                         fig_pie.update_layout(title="Sewage Breakdown", width=400, height=400)
                         st.plotly_chart(fig_pie, key="manual_pie")
                     with col2:
-                        fig_3d = go.Figure(data=[go.Scatter3d(
-                            x=[length], y=[width], z=[height],
-                            mode='markers+text', marker=dict(size=10, color='blue'),
-                            text=[f"L:{length:.2f}, W:{width:.2f}, H:{height:.2f}"],
-                            hovertemplate="Length: %{x:.2f}m<br>Width: %{y:.2f}m<br>Height: %{z:.2f}m"
-                        )])
-                        fig_3d.update_layout(scene=dict(
-                            xaxis_title='Length (m)', yaxis_title='Width (m)', zaxis_title='Height (m)',
-                            xaxis=dict(range=[0, 50]), yaxis=dict(range=[0, 20]), zaxis=dict(range=[0, 10])
-                        ), title="STP Dimensions", width=400, height=400)
+                        # 3D Scatter Plot using sewage data with multiple bubbles and color range
+                        fig_3d = px.scatter_3d(
+                            results_df,
+                            x='Domestic (L)',
+                            y='Flushing (L)',
+                            z='Sewage (L)',
+                            color='Sewage (L)',
+                            size='Sewage (L)',
+                            title='3D STP Sewage Visualization',
+                            size_max=60,
+                            color_continuous_scale='Viridis'
+                        )
+                        fig_3d.update_layout(
+                            scene_camera=dict(eye=dict(x=1.2, y=1.2, z=0.8)),
+                            width=800,
+                            height=600,
+                            coloraxis_colorbar=dict(title="Sewage (L) Range")
+                        )
                         st.plotly_chart(fig_3d, key="manual_3d")
                     
                     # Button to show pump head form
